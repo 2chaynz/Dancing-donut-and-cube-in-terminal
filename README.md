@@ -15,6 +15,5 @@ The ultimate guide to understand the famous moving donut.c in the terminal as we
 - Basic understanding of C programming
 
 Example :
-Compile the donut with : clang donut.c -o donut 
-Run the donut with : ./donut
+Compile the donut with : "clang donut.c -o donut" and run the donut with : "./donut"
 
