@@ -9,6 +9,11 @@ The ultimate guide to understand the famous moving donut.c in the terminal as we
 - Step-by-step breakdowns of the algorithms
 - Detailed comments explaining every concept
 
+# Advices :
+
+I recommend checking the Donut script and the PDF file related first for a better understanding of the concepts, before reading those about the cube.
+ 
+
 # Prerequisites : 
 
 - GCC or clang compiler
