@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage{amsmath} % for equations
+\usepackage{graphicx} % to insert images
+
+\title{Maths for Donut.c}
+\author{Chahyn Ettaghi}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Before anything I would advise checking \underline{https://www.a1k0n.net/2011/07/20/donut-math.html} to understand better this article.
+
+Let's note the rotation matrices useful for the following: 
+% Rotation around the Y axis
+\[
+R_y(\phi) =
+\begin{pmatrix}
+\cos\phi & 0 & \sin\phi \\
+0 & 1 & 0 \\
+-\sin\phi & 0 & \cos\phi
+\end{pmatrix}
+\]
+
+% Rotation around the X axis
+\[
+R_x(A) =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & \cos A & \sin A \\
+0 & -\sin A & \cos A
+\end{pmatrix}
+\]
+
+% Rotation around the Z axis
+\[
+R_z(B) =
+\begin{pmatrix}
+\cos B & \sin B & 0 \\
+-\sin B & \cos B & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+
+A torus is defined by two radius and two rotation angles: 
+
+\[
+R_2 = \text{distance from the tube center to the torus center}, \quad
+R_1 = \text{tube radius}.
+\]
+
+A point on the torus in 3D coordinates (before rotations by $A$ and $B$) is given by (cf.\ A1kon website, and verify the calculations yourself with $R_y(\phi)$):
+
+
+\[
+(x,y,z) =
+\bigl((R_2 + R_1 \cos \theta)\cos \phi, R_1 \sin \theta,\; 
+(R_2 + R_1 \cos \theta)\sin \phi \; 
+ \bigr).
+\]
+
+where:  
+
+- $\theta$ traverses the circular section of the tube,  
+- $\varphi$ goes around the torus.  
+
+\medskip
+
+Then, to animate it, we apply two successive rotations: around the $z$ axis (angle $B$) and rotation around the $x$ axis (angle $A$).  
+
+\medskip
+
+The final position of a point of the torus after 3D transformation is obtained by applying these two rotations to $(x,y,z)$ (in the following order): \[
+R_y(\phi)R_x(A)R_z (B )
+\]
+
+\[
+\begin{bmatrix}
+x1 \\
+y1 \\
+z1
+\end{bmatrix}
+=
+\begin{pmatrix}
+(R_2 + R_1 \cos\theta)\cos\phi \cos B + \big(R_1 \sin\theta \cos A + (R_2 + R_1 \cos\theta)\sin\phi \sin A\big)\sin B \\[1mm]
+-(R_2 + R_1 \cos\theta)\cos\phi \sin B + \big(R_1 \sin\theta \cos A + (R_2 + R_1 \cos\theta)\sin\phi \sin A\big)\cos B \\[1mm]
+(R_2 + R_1 \cos\theta)\sin\phi \cos A - R_1 \sin\theta \sin A
+\end{pmatrix}
+\]
+
+
+\section*{Rigorous demonstration of the torus normal}
+
+We are going to determine the normal to the torus.
+
+\subsection*{1. Torus parametrization}
+
+As said before, a torus is parameterized by two angles: 
+Without rotation, the 3D coordinates of a point of the torus are:
+\[
+r(\theta, \phi) = 
+\big( (R_2 + R_1 \cos\theta)\cos\phi,R_1 \sin\theta,\; (R_2 + R_1 \cos\theta)\sin\phi\;  \big)
+\]
+
+\subsection*{2. Tangent vectors of the surface}
+
+The surface is parameterized in \((\theta, \phi)\).  
+Its tangent vectors are:
+\[
+\frac{\partial \vec{r}}{\partial \theta} =
+\begin{pmatrix}
+- R_1 \sin\theta \cos\phi \\
+R_1 \cos\theta\\
+- R_1 \sin\theta \sin\phi 
+
+\end{pmatrix},
+\qquad
+ \frac{\partial \vec{r}}{\partial \phi} =
+\begin{pmatrix}
+- (R_2 + R_1 \cos\theta) \sin\phi \\
+0\\
+(R_2 + R_1 \cos\theta) \cos\phi 
+\end{pmatrix}.
+\]
+
+
+\subsection*{3. Normal = cross product}
+
+The normal is given by:
+\[
+\vec{N} = \frac{\partial \vec{r}}{\partial \theta} \times \frac{\partial \vec{r}}{\partial \phi}
+\]
+
+
+Which is:
+\[
+\vec{N} = R_1(R_2 + R_1 \cos\theta) 
+\big( \cos\theta \cos\phi,\; \sin\theta,\; \cos\theta \sin\phi \big)
+\]
+
+
+The normal vectors are proportional to \(\vec{N}\), that is:
+\[
+\big( \cos\theta \cos\phi,\; \sin\theta,\; \cos\theta \sin\phi \big) \in \mathrm{Vect}(\vec{N})
+\]
+
+
+
+
+\section*{Dot product of the normal with light}
+
+
+The normal vector after torus parametrization (before rotation) is therefore:
+\[
+\tilde{\mathbf{N}}_0 = \big( \cos\theta \cos\phi,\; \sin\theta,\; \cos\theta \sin\phi \big)
+\]
+
+Then after rotation: 
+
+\[
+\tilde{\mathbf{N}} = \tilde{\mathbf{N}}_0 \, R_z(B)R_x(A)
+\]
+
+
+\[
+\tilde{\mathbf{N}} =
+\begin{pmatrix} 
+\cos\theta \cos\phi \cos B - \sin\theta \sin B \\ 
+\cos A(\cos\theta \cos\phi \sin B + \sin\theta \cos B) - \cos\theta \sin\phi \sin A \\ 
+\sin A(\cos\theta \cos\phi \sin B + \sin\theta \cos B) + \cos\theta \sin\phi \cos A 
+\end{pmatrix}
+\]
+
+The light is directed by:
+\[
+\vec{L} = (0, 1, -1)
+\]
+
+The dot product gives the luminance \(Lu\):
+\[
+\begin{aligned}
+Lu &= \tilde{\mathbf{N}} \cdot \vec{L} \\
+&= (\cos A - \sin A)(\cos\theta \cos\phi \sin B + \sin\theta \cos B) - \cos\theta \sin\phi (\cos A + \sin A)
+\end{aligned}
+\]
+
+
+
+\end{document}
