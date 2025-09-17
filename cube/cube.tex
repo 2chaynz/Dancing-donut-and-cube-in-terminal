@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath} % for equations
+\usepackage{graphicx} % to insert images
+
+\title{Maths for cube.c}
+\author{Chahyn Ettaghi}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+I recommend checking the Donut script and the PDF file first for a better understanding of the concepts, before reading this one, which is only a small part of the Donut script applied to the moving torus.
+\section*{Rotations applied to the cube}
+
+This short note presents two rotation matrices in $\mathbb{R}^3$ and their composition. We work in a right-handed Cartesian coordinate system with positive angles following the right-hand rule.
+
+\medskip
+
+Let
+\[
+\bm{v} = \begin{bmatrix} x \\ y \\ z \end{bmatrix}
+\]
+be a vector in Cartesian coordinates.
+
+\section*{Rotation about the $X$-axis}
+
+The rotation matrix that rotates a vector by an angle $A$ about the $X$-axis is
+\[
+R_x(A) = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos A & -\sin A \\
+0 & \sin A & \cos A
+\end{bmatrix}.
+\]
+
+\section*{Rotation about the $Y$-axis}
+
+The rotation matrix that rotates a vector by an angle $B$ about the $Y$-axis is
+\[
+R_y(B) = \begin{bmatrix}
+\cos B & 0 & \sin B \\
+0 & 1 & 0 \\
+-\sin B & 0 & \cos B
+\end{bmatrix}.
+\]
+
+\section*{Composition: $R_y(B)\,R_x(A)$}
+
+We apply first a rotation by $A$ about the $X$-axis, then a rotation by $B$ about the $Y$-axis. The composed transformation is
+\[
+\bm{v}' = R_y(B)\,R_x(A)\,\bm{v}.
+\]
+
+So we obtain:
+\[
+\bm{v}' = \begin{bmatrix} x' \\ y' \\ z' \end{bmatrix}
+= \begin{bmatrix}
+x\cos B + (y\sin A + z\cos A)\sin B \\
+y\cos A - z\sin A \\
+- x\sin B + (y\sin A + z\cos A)\cos B
+\end{bmatrix}.
+\]
+
+\end{document}
