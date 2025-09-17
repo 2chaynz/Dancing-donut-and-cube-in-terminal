@@ -11,7 +11,7 @@ The ultimate guide to understand the famous moving donut.c in the terminal as we
 
 # Advices :
 
-I recommend checking the Donut script and the PDF file related first for a better understanding of the concepts, before reading those about the cube.
+I recommend checking the Donut script and the related PDF file first for a better understanding of the concepts, before reading those about the cube, since I have provided much more detailed documentation on the Donut.
  
 
 # Prerequisites : 
