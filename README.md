@@ -1,5 +1,8 @@
 # Dancing Donut and Cube in Terminal. 🍩
 
+<img width="561" height="342" alt="donut" src="https://github.com/user-attachments/assets/1402f901-0a73-4f15-9a0d-e9ac020df0c4" />
+
+
 The ultimate guide to understand the famous moving donut.c in the terminal as well as the cube. All the math is going to be explained. After struggling alone to grasp all the concepts I have decided to make a repo about it to explain everything, especially the math and C syntax that are sometimes obscure.
 
 # What This Repository Contains ?
