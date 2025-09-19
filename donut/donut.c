@@ -71,6 +71,7 @@ int k;
 
 int main()
 {
+  {
   float A = 0, B = 0, theta, phi, z[1760]; // The angles of rotation A and B, theta and phi for constructing the torus in the following and the z buffer for depth.
   char b[1760];                            // The buffer b for rendering.
   
@@ -197,6 +198,7 @@ If k % 80 == 0 → we print \n (jump of line) in order to go to the next one
     B += 0.005;
   }
 }
-
+return 0;  
+}
 
 
