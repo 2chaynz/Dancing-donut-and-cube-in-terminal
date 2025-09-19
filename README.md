@@ -1,4 +1,4 @@
-# Dancing Donut and Cube in Terminal. 🍩
+# Dancing donut and cube in terminal. 🍩
 
 <img width="561" height="342" alt="donut" src="https://github.com/user-attachments/assets/1402f901-0a73-4f15-9a0d-e9ac020df0c4" />
 
