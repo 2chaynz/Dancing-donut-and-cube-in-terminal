@@ -12,7 +12,7 @@ The ultimate guide to understand the famous moving donut.c in the terminal as we
 - Step-by-step breakdowns of the algorithms
 - Detailed comments explaining every concept
 
-# Advices :
+# Advice :
 
 I recommend checking the donut script and the related PDF file first for a better understanding of the concepts, before reading those about the cube, since I have provided much more detailed documentation on the donut.
  
